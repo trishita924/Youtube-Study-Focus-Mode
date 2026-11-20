@@ -1,65 +1,191 @@
-# StudyTube Focus — YouTube Study & Timestamp Notes (Chrome Extension)
+# StudyTube Focus — YouTube Study & Focus Extension
 
-Stay focused while studying on YouTube! **StudyTube Focus** helps you study intentionally with a **"Why Are You Here?" Focus Gate**, tracks your **Daily YouTube Study Time**, hides distracting Shorts, recommendations, and comments across YouTube navigation without reloading, organizes videos into **Study Lists**, and saves **clickable Timestamp Notes**.
+**StudyTube Focus** is a browser extension designed to make YouTube a distraction-free study environment.
 
----
+It helps you stay focused by hiding distracting content, tracking your daily YouTube study time, saving timestamp-based notes and organizing videos into study lists.
+
+It also includes a **"Why Are You Here?" Focus Gate** that asks for your study goal before unlocking YouTube for 60 minutes.
 
 ## Features
 
-- **"Why Are You Here?" Focus Gate (60-Minute Sessions)**:
-  - Prompts you to enter your study goal (e.g., *"Revising thermodynamics"*) before unlocking YouTube for **60 minutes**.
-  - Displays a live countdown timer with your study goal and automatically locks again when the 60 minutes expire.
-  - Can be turned **ON/OFF** anytime in the extension popup under **Focus Mode**.
-- **Daily YouTube Study Time Tracker**:
-  - Measures actual active time spent on YouTube (only when the YouTube tab is visible and focused—never counts background tabs or inactive windows).
-  - Automatically resets at midnight when the calendar day changes.
-- **Distraction-Free Focus Mode (No Reload Needed)**:
-  - Toggle hiding **YouTube Shorts**, **Recommendations / Up Next**, and **Comments**—stays active as you click between videos.
-- **Clickable Timestamp Notes & Study Lists**:
-  - Save notes linked to exact video timestamps (`MM:SS`) via the floating in-page bar or extension popup.
-  - Clicking any saved note opens that video and jumps directly to the saved second.
+### 1. Why Are You Here? Focus Gate
+- Enter your study goal before accessing YouTube.
+- Unlock YouTube for 60 minutes.
+- View your remaining session time.
+- YouTube locks again when the session expires.
+- Enable or disable Focus Mode from the extension popup.
+
+### 2. Daily YouTube Study Time
+- Tracks time spent on active and visible YouTube tabs.
+- Does not count background tabs or inactive browser windows.
+- Displays your daily study time.
+- Resets automatically when the calendar day changes.
+
+### 3. Distraction-Free YouTube
+Choose what you want to hide:
+- YouTube Shorts
+- Recommendations and Up Next
+- Comments
+
+The extension continues working when you move between videos without manually refreshing YouTube.
+
+### 4. Timestamp Notes
+- Save notes linked to specific video timestamps.
+- Organize important learning points.
+- Click a saved note to open the corresponding video at the saved moment.
+
+### 5. Study Lists
+- Organize videos into personal study lists.
+- Keep useful learning resources together.
+
+### 6. Persistent Local Storage
+Your settings, study lists, timestamp notes, focus sessions and daily study time are saved locally using Chrome storage.
+
+Your saved data is designed to survive browser restarts.
 
 ---
 
-## How to Install (For Friends — No Coding Required!)
+## Installation Guide
 
-Follow these 6 simple steps in Google Chrome (or Microsoft Edge / Brave):
+**You do not need to know programming to install this extension.**
 
-### Step 1: Download & Extract the ZIP File
-1. Download **`YouTube-Study-Focus.zip`**.
-2. **Right-click** the ZIP file and choose **Extract All...** (Windows) or **double-click** it (Mac).
-3. Make sure you see a folder named **`YouTube-Study-Focus`** containing `manifest.json`, `background.js`, `content/`, `popup/`, and `icons/`.
+You only need a Chromium-based browser such as Google Chrome or Brave.
 
-### Step 2: Open Chrome Extensions Page
-1. Open Google Chrome.
-2. Click the address bar at the top, type **`chrome://extensions`**, and press **Enter**.
+### Step 1 — Download the project
 
-### Step 3: Turn On Developer Mode
-1. Look at the **top-right corner** of the Extensions page.
-2. Click the **Developer mode** toggle switch so it turns **ON** (blue).
+1. Open this GitHub repository:
+   https://github.com/trishita924/YouTube-Study-Focus-Mode
+2. Click the green **Code** button.
+3. Select **Download ZIP**.
+4. Wait for the ZIP file to download.
 
-### Step 4: Load the Extension
-1. Click **Load unpacked** at the top-left.
-2. Browse to the folder you extracted in Step 1 and select the **`YouTube-Study-Focus`** folder (the folder that has `manifest.json` inside it).
-3. Click **Select Folder** (or **Open**).
-4. **StudyTube Focus** will now appear in your extensions list!
+### Step 2 — Extract the ZIP file
 
-### Step 5: Pin It to Your Toolbar (Recommended)
-1. Click the **Puzzle Piece icon** (🧩) in the top-right corner of Chrome.
-2. Find **StudyTube Focus** and click the **Pin icon** (📌) next to it so it stays visible.
+1. Open your Downloads folder.
+2. Find `YouTube-Study-Focus.zip`.
+3. Right-click the ZIP file.
+4. Select **Extract All**.
+5. Open the extracted folder named `YouTube-Study-Focus`.
 
-### Step 6: Start Using It on YouTube
-1. Open [YouTube](https://www.youtube.com).
-2. Enter your study goal in the **"Why Are You Here?"** Focus Gate to unlock YouTube for 60 minutes.
-3. Click the **StudyTube Focus** icon in your toolbar to:
-   - View **Today's YouTube Study Time** and **Remaining Session Time**.
-   - Toggle **Focus Gate**, **Hide Shorts**, **Hide Recommendations**, and **Hide Comments**.
-   - Create **Study Lists** and save/jump to **Timestamp Notes**.
+Make sure you can see these files and folders:
+
+```text
+YouTube-Study-Focus/
+│
+├── manifest.json
+├── background.js
+│
+├── content/
+│   ├── content.js
+│   └── content.css
+│
+├── popup/
+│   ├── popup.html
+│   ├── popup.js
+│   └── popup.css
+│
+└── icons/
+    ├── icon16.png
+    ├── icon48.png
+    └── icon128.png
+```
+
+### Step 3 — Open the Extensions page
+
+For Google Chrome, enter this in your address bar:
+
+`chrome://extensions`
+
+For Brave, enter:
+
+`brave://extensions`
+
+Press Enter.
+
+### Step 4 — Enable Developer Mode
+
+1. Find **Developer mode** in the top-right corner.
+2. Turn the switch ON.
+
+### Step 5 — Install StudyTube Focus
+
+1. Click **Load unpacked**.
+2. Navigate to the extracted `YouTube-Study-Focus` folder.
+3. Select the folder that directly contains `manifest.json`.
+4. Click **Select Folder**.
+
+That's it! StudyTube Focus should now appear in your installed extensions.
+
+### Step 6 — Pin the Extension
+
+1. Click the puzzle-piece icon in your browser toolbar.
+2. Find StudyTube Focus.
+3. Click the pin icon to keep it easily accessible.
 
 ---
 
-## Privacy & Data Storage
+## How to Use
 
-- All settings, study lists, timestamp notes, focus sessions, and daily study time are stored locally on your computer using `chrome.storage.local`.
-- Your data survives closing and restarting Chrome.
-- No account, login, or external server is used.
+1. Open YouTube.
+2. Enter your study goal in the **Why Are You Here?** Focus Gate.
+3. Click **Unlock YouTube for 60 Minutes**.
+4. Open the StudyTube Focus extension popup.
+5. View your daily YouTube study time and remaining session time.
+6. Toggle Shorts, Recommendations and Comments hiding.
+7. Save videos in Study Lists.
+8. Add timestamp notes while watching educational videos.
+
+---
+
+## Privacy
+
+- No account or login is required.
+- No backend server or database is required.
+- Personal settings and study data are stored locally using browser storage.
+- The extension does not require an external API.
+
+---
+
+## Important Notes
+
+- This is a browser extension, not a normal website.
+- Opening the GitHub Pages link does not automatically install the extension.
+- Each user must download and install the extension using the steps above.
+- The extension must remain installed and enabled to work on YouTube.
+- If you download an updated version, you may need to load the updated folder through the Extensions page.
+
+---
+
+## Project Structure
+
+- `manifest.json` — Extension configuration.
+- `background.js` — Background functionality and persistent tracking.
+- `content/` — YouTube page interaction and focus features.
+- `popup/` — Extension popup interface.
+- `icons/` — Extension icons.
+
+---
+
+## Testing Checklist
+
+Before considering the project fully tested, verify:
+
+- [ ] Focus Gate asks for a study goal.
+- [ ] YouTube unlocks for 60 minutes.
+- [ ] Countdown displays the remaining time.
+- [ ] YouTube locks again after the session expires.
+- [ ] Daily study time is tracked correctly.
+- [ ] Shorts, recommendations and comments can be hidden.
+- [ ] Features remain active when switching videos without reloading.
+- [ ] Timestamp notes open the correct video moment.
+- [ ] Study Lists save and load correctly.
+- [ ] Saved data survives a complete browser restart.
+- [ ] A friend can install the extension using only this guide.
+
+---
+
+**Built as a productivity project to make learning on YouTube more intentional and distraction-free.**
+
+**Project:** StudyTube Focus  
+**Type:** Browser Extension  
+**Technology:** HTML, CSS, JavaScript, Chrome Extensions Manifest V3
