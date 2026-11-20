@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyTube Focus</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-shell">
+    <header class="popup-header">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <h1>StudyTube Focus</h1>
+      </div>
+      <div class="header-badges">
+        <span class="time-pill" id="header-study-time" title="Today's active YouTube study time">⏱ 0m 00s</span>
+        <span class="stats-pill" id="header-stats">0 notes</span>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button type="button" class="tab-btn active" data-tab="notes">Timestamp Notes</button>
+      <button type="button" class="tab-btn" data-tab="lists">Study Lists</button>
+      <button type="button" class="tab-btn" data-tab="focus">Focus Mode</button>
+    </nav>
+
+    <!-- ==================== TAB 1: TIMESTAMP NOTES ==================== -->
+    <section id="tab-notes" class="tab-panel active">
+      <div id="current-video-box" class="card current-video-card hidden">
+        <div class="cv-top">
+          <span class="cv-label">Current Video</span>
+          <span class="ts-badge" id="cv-timestamp">00:00</span>
+        </div>
+        <div class="cv-title" id="cv-title">Loading...</div>
+        <form id="note-form" class="note-form">
+          <textarea id="note-input" rows="2" placeholder="Write a study note for this timestamp..." required></textarea>
+          <div class="note-form-row">
+            <select id="note-list-select" aria-label="Study list"></select>
+            <button type="submit" class="btn btn-primary">+ Save Note</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="no-video-hint" class="hint-banner">
+        Open any YouTube video to capture a new timestamp note. Click any saved note below to jump right back to that moment!
+      </div>
+
+      <div class="filter-row">
+        <input type="search" id="notes-search" placeholder="Search notes or video title..." />
+      </div>
+
+      <div id="notes-list" class="items-list"></div>
+    </section>
+
+    <!-- ==================== TAB 2: STUDY LISTS ==================== -->
+    <section id="tab-lists" class="tab-panel">
+      <form id="create-list-form" class="inline-form">
+        <input type="text" id="new-list-name" placeholder="New study list name (e.g., Physics)" required />
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+
+      <div id="add-video-to-list-box" class="card hidden" style="margin-bottom: 10px;">
+        <div class="cv-top">
+          <span class="cv-label">Save Current Video</span>
+        </div>
+        <div class="cv-title" id="list-cv-title"></div>
+        <div class="note-form-row" style="margin-top: 8px;">
+          <select id="save-video-list-select" aria-label="Choose study list"></select>
+          <button type="button" id="btn-save-current-video" class="btn btn-outline">Save Video</button>
+        </div>
+      </div>
+
+      <div id="study-lists-container" class="items-list"></div>
+    </section>
+
+    <!-- ==================== TAB 3: FOCUS MODE ==================== -->
+    <section id="tab-focus" class="tab-panel">
+      <div class="card">
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-title">"Why Are You Here?" Focus Gate</div>
+            <div class="toggle-desc">Require a study reason to unlock YouTube for 60 min</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-focus-gate" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div id="session-status-box" class="session-status-box hidden">
+          <div class="session-info">
+            <span class="cv-label">Active Session</span>
+            <strong class="ts-badge" id="popup-session-remaining">60:00</strong>
+          </div>
+          <div class="session-reason-text" id="popup-session-reason"></div>
+          <button type="button" id="btn-end-session" class="btn btn-outline btn-xs">Lock Gate Now</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-title">Hide YouTube Shorts</div>
+            <div class="toggle-desc">Removes Shorts shelves, sidebar tab, and Shorts links</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-shorts" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-title">Hide Recommendations</div>
+            <div class="toggle-desc">Hides Up Next sidebar &amp; end-screen video cards</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-recs" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-title">Hide Comments</div>
+            <div class="toggle-desc">Removes comment section below the video</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-comments" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="card usage-card">
+        <div class="toggle-title">Today's Study &amp; Progress</div>
+        <div class="usage-grid-3">
+          <div class="usage-item">
+            <strong id="stat-study-time">0m 00s</strong>
+            <span>Today's Time</span>
+          </div>
+          <div class="usage-item">
+            <strong id="stat-notes-count">0</strong>
+            <span>Notes Saved</span>
+          </div>
+          <div class="usage-item">
+            <strong id="stat-lists-count">0</strong>
+            <span>Study Lists</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+/* ==========================================================================
+   StudyTube Focus — Content Script Styles
+   Hides Shorts, Recommendations, and Comments based on html.* classes.
+   Includes Focus Gate overlay, session countdown badge, and quick note bar.
+   ========================================================================== */
+
+/* 1. Hide Shorts */
+html.st-hide-shorts ytd-reel-shelf-renderer,
+html.st-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+html.st-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+html.st-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.st-hide-shorts ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+html.st-hide-shorts ytd-guide-entry-renderer a[href^="/shorts"],
+html.st-hide-shorts yt-tab-shape[tab-title="Shorts"],
+html.st-hide-shorts ytd-video-renderer:has(a[href^="/shorts/"]),
+html.st-hide-shorts ytd-grid-video-renderer:has(a[href^="/shorts/"]) {
+  display: none !important;
+}
+
+/* 2. Hide Recommendations (Watch Next Sidebar + Endscreens) */
+html.st-hide-recs #secondary #related,
+html.st-hide-recs ytd-watch-next-secondary-results-renderer,
+html.st-hide-recs .ytp-endscreen-content,
+html.st-hide-recs .ytp-ce-element {
+  display: none !important;
+}
+
+/* Center primary player cleanly when sidebar recommendations are hidden */
+html.st-hide-recs ytd-watch-flexy:not([fullscreen]) #secondary {
+  display: none !important;
+}
+
+/* 3. Hide Comments */
+html.st-hide-comments #comments,
+html.st-hide-comments ytd-comments#comments {
+  display: none !important;
+}
+
+/* ==================== FOCUS GATE OVERLAY ==================== */
+#st-focus-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+#st-focus-gate.st-hidden {
+  display: none !important;
+}
+
+.st-gate-card {
+  background: #FFFFFF;
+  color: #0F172A;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 18px;
+  padding: 28px 26px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  text-align: left;
+}
+
+.st-gate-badge {
+  display: inline-block;
+  background: #CCFBF1;
+  color: #0F766E;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.st-gate-title {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.st-gate-subtitle {
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.st-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#st-gate-reason-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: #0F172A;
+  background: #F8FAFC;
+  box-sizing: border-box;
+}
+
+#st-gate-reason-input:focus {
+  outline: none;
+  border-color: #0F766E;
+  background: #FFFFFF;
+}
+
+.st-gate-error {
+  color: #DC2626;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.st-gate-error.st-hidden {
+  display: none !important;
+}
+
+#st-gate-submit-btn {
+  background: #0F766E;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#st-gate-submit-btn:hover {
+  background: #0D9488;
+}
+
+/* ==================== REMAINING SESSION PILL ==================== */
+#st-session-pill {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9998;
+  background: rgba(15, 23, 42, 0.9);
+  color: #FFFFFF;
+  border: 1px solid rgba(20, 184, 166, 0.55);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+#st-session-pill.st-hidden {
+  display: none !important;
+}
+
+.st-session-timer {
+  color: #5EEAD4;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* ==================== IN-PAGE QUICK TIMESTAMP BAR ==================== */
+#st-quick-bar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(20, 184, 166, 0.6);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  backdrop-filter: blur(6px);
+}
+
+#st-quick-bar.st-hidden {
+  display: none !important;
+}
+
+#st-quick-note-btn {
+  background: #0F766E;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#st-quick-note-btn:hover {
+  background: #14B8A6;
+}
+
+#st-quick-note-input {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  color: #FFFFFF;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  width: 200px;
+  outline: none;
+}
+
+#st-quick-note-input::placeholder {
+  color: #CBD5E1;
+}
+
+#st-quick-toast {
+  font-size: 12px;
+  font-weight: 600;
+  color: #5EEAD4;
+  padding: 0 4px;
+}
