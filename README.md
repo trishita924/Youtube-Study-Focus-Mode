@@ -51,13 +51,20 @@ Your saved data is designed to survive browser restarts.
 
 You only need a Chromium-based browser such as Google Chrome or Brave.
 
-### Step 1 — Download the project
+### Step 1 — Download the Project
 
-1. Open this GitHub repository:
+1. Open the StudyTube Focus GitHub repository:
    https://github.com/trishita924/YouTube-Study-Focus-Mode
-2. Click the green **Code** button.
-3. Select **Download ZIP**.
-4. Wait for the ZIP file to download.
+2. Click this direct download link:
+
+https://github.com/trishita924/YouTube-Study-Focus-Mode/archive/refs/heads/main.zip
+
+3. The ZIP file will download automatically.
+4. Open your Downloads folder and find the downloaded ZIP file.
+5. Right-click it and select **Extract All**.
+6. Open the extracted project folder.
+
+Continue with Step 3 of the installation guide.
 
 ### Step 2 — Extract the ZIP file
 
